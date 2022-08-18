@@ -21,34 +21,40 @@ class Usuario {
     }
 }
 
-function registroUsuario() {
-    mensajeRegistro.innerHTML = "";
-    const usuario = new Usuario(nombre.value, email.value, password.value);
-    const validar = validarUsuario(usuario);
-    console.log(usuario);
+let botonRegistroUsuario =  document.getElementById("btnRegistroUsuario")
+botonRegistroUsuario.onclick = () =>{
 
-    if(usuario.password !== passwordConfirmado.value) {
-        mensajeRegistro.innerHTML = "Los passwords deben coincidir";
-        return;
-    }
-
-    if(validar) {
-        mensajeRegistro.innerHTML = `El usuario ${usuario.email} ya existe`;
-        return;
-    }
-    listaUsuarios.push(usuario);
-    mensajeRegistro.innerHTML = "Usuario registrado con exito";
-    console.log(listaUsuarios);
-    formularioRegistro.reset();
-}
-
-function validarUsuario(usuario) {
-    return listaUsuarios.find((item) => item.email === usuario.email);
-}
-
-function login() {
+    //function registroUsuario() {
+        mensajeRegistro.innerHTML = "";
+        const usuario = new Usuario(nombre.value, email.value, password.value);
+        const validar = validarUsuario(usuario);
+        console.log(usuario);
     
+        if(usuario.password !== passwordConfirmado.value) {
+            mensajeRegistro.innerHTML = "Los passwords deben coincidir";
+            return;
+        }
+    
+        if(validar) {
+            mensajeRegistro.innerHTML = `El usuario ${usuario.email} ya existe`;
+            return;
+        }
+        listaUsuarios.push(usuario);
+        mensajeRegistro.innerHTML = "Usuario registrado con exito";
+        console.log(listaUsuarios);
+        formularioRegistro.reset();
+    }
+    
+    function validarUsuario(usuario) {
+        return listaUsuarios.find((item) => item.email === usuario.email);
 
+    }
+//}
+
+let botonLogin =  document.getElementById("btnLogin")
+botonLogin.onclick = () =>{
+
+//function login() {
     const usuario = {
         email: emailLogin.value,
         password: passwordLogin.value
@@ -74,4 +80,5 @@ function login() {
 
     window.location.href="./productos.html";
 }
+//}
 
